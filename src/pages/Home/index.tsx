@@ -45,7 +45,7 @@ class Home extends Nullstack {
   render({ i18n }: ClientContext) {
     return (
       <div class="flex flex-col gap-12">
-        {/* <Navbar /> */}
+        <Navbar />
         <Header i18n={i18n} />
         <About i18n={i18n} />
         <div class="w-1/2 flex flex-col m-auto">
