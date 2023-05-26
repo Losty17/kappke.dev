@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "strict": false,
+    "noImplicitAny": false,
+    "jsx": "preserve",
+    "baseUrl": "./src",
+    "paths": {
+      "@custom-types": ["types"],
+      "@custom-types/*": ["types/*"],
+      "@components": ["components"],
+      "@components/*": ["components/*"],
+      "@pages": ["pages"],
+      "@pages/*": ["pages/*"],
+      "@styles": ["styles"],
+      "@styles/*": ["styles/*"],
+      "@utils": ["utils"],
+      "@utils/*": ["utils/*"],
+      "@i18n": ["i18n"],
+      "@i18n/*": ["i18n/*"]
+    }
+  },
+}
