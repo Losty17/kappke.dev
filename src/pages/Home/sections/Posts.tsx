@@ -1,7 +1,9 @@
 import { ClientContext } from "@custom-types";
 import Nullstack, { NullstackNode } from "nullstack";
+import { Container, Heading, Section } from "@components";
 
 declare function Post(): NullstackNode;
+declare function PostList(): NullstackNode;
 
 interface PostsContext {
   posts: {
@@ -40,47 +42,54 @@ export default class Posts extends Nullstack {
   }: ClientContext<{
     post: PostsContext["posts"][0];
   }>) {
-    const { title, summary, cover, url } = post;
+    let { title, summary, cover, url } = post;
+
+    if (summary.length > 210) summary = summary.slice(0, 210) + "...";
+
     return (
-      <a class="flex flex-col gap-4 w-1/3" href={url}>
+      <a class="flex flex-col gap-4 w-full sm:w-1/3" href={url}>
         <div class="w-full h-fit aspect-square bg-gray-100 rounded-lg"></div>
         <span class="flex flex-col gap-1">
-          <span class="text-xl uppercase font-semibold">{title}</span>
+          <Heading type="h3">{title}</Heading>
           <span class="text-sm text-justify font-regular">{summary}</span>
         </span>
       </a>
     );
   }
 
+  renderPostList({ posts, i18n }: ClientContext<PostsContext>) {
+    return (
+      <>
+        <div class="flex flex-col sm:flex-row justify-between gap-12">
+          {posts.map((post) => (
+            <Post post={post} />
+          ))}
+        </div>
+        <a
+          class="text-lg font-semibold uppercase w-full text-center"
+          href="/posts"
+        >
+          {i18n.seeMore} <span class="font-fira-code">{"->"}</span>
+        </a>
+      </>
+    );
+  }
+
   render({ i18n, posts }: ClientContext<PostsContext>) {
     return (
-      <section id="posts" class="bg-gray-900 w-full text-gray-100 py-16">
-        <div class="w-1/2 flex flex-col gap-8 m-auto">
-          <span class="text-3xl font-semibold uppercase w-full text-right">
-            {i18n.recentPosts.title}
-          </span>
+      <Section id="posts">
+        <Container type="inner">
+          <Heading size="h2" side="right">{i18n.recentPosts.title}</Heading>
 
           {posts.length ? (
-            <>
-              <div class="flex justify-between gap-12">
-                {posts.map((post) => (
-                  <Post post={post} />
-                ))}
-              </div>
-              <a
-                class="text-lg font-semibold uppercase w-full text-center"
-                href="/posts"
-              >
-                {i18n.seeMore} <span class="font-fira-code">{"->"}</span>
-              </a>
-            </>
+            <PostList />
           ) : (
             <span class="text-lg font-regular w-full text-center">
               {i18n.recentPosts.empty} :(
             </span>
           )}
-        </div>
-      </section>
+        </Container>
+      </Section>
     );
   }
 }

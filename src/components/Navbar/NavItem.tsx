@@ -10,7 +10,7 @@ export default ({ title, link }: NavItemProps) => {
   return (
     <a
       href={link}
-      class={`p-4 ${after} ${hover}`}
+      class={`p-4 text-xs sm:text-lg ${after} ${hover}`}
     >
       {title}
     </a>
