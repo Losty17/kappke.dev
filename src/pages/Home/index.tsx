@@ -56,7 +56,7 @@ class Home extends Nullstack {
           <Posts i18n={i18n} />
           <Container id="contact">
             <Heading type="h2">{i18n.contactMe.title}</Heading>
-            <form class="flex flex-col gap-4 p-12">
+            <form class="flex flex-col gap-4 p-12 sm:p-0">
               <div class="flex gap-12">
                 <div class="flex flex-col gap-8 w-1/2">
                   <Input placeholder="Nome" />
