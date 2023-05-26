@@ -1,4 +1,4 @@
-import { Navbar } from "@components";
+import Navbar from "@components/Navbar";
 import { ClientContext } from "@custom-types";
 import i18n from "@i18n";
 import Nullstack, { NullstackNode } from "nullstack";
