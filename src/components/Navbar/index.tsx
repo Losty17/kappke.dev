@@ -1,33 +1,34 @@
 import NavItem from "./NavItem";
+import Nullstack from "nullstack";
 
-export default class Navbar {
-  // changeColorOnScroll() {
-  //   const navItems = document.querySelectorAll("nav a");
+export default class Navbar extends Nullstack {
+  changeColorOnScroll() {
+    const navItems = document.querySelectorAll("nav a");
 
-  //   if (window.scrollY <= 150) {
-  //     document
-  //       .querySelector("nav")
-  //       .classList.remove("bg-gray-900", "text-gray-100", "shadow");
+    if (window.scrollY <= 150) {
+      document
+        .querySelector("nav")
+        .classList.remove("bg-gray-900", "text-gray-100", "shadow");
 
-  //     navItems.forEach((item) => {
-  //       item.classList.remove("hover:after:bg-gray-100");
-  //       item.classList.add("hover:after:bg-gray-900");
-  //     });
-  //   } else {
-  //     document
-  //       .querySelector("nav")
-  //       .classList.add("bg-gray-900", "text-gray-100", "shadow");
+      navItems.forEach((item) => {
+        item.classList.remove("hover:after:bg-gray-100");
+        item.classList.add("hover:after:bg-gray-900");
+      });
+    } else {
+      document
+        .querySelector("nav")
+        .classList.add("bg-gray-900", "text-gray-100", "shadow");
 
-  //     navItems.forEach((item) => {
-  //       item.classList.add("hover:after:bg-gray-100");
-  //       item.classList.remove("hover:after:bg-gray-900");
-  //     });
-  //   }
-  // }
+      navItems.forEach((item) => {
+        item.classList.add("hover:after:bg-gray-100");
+        item.classList.remove("hover:after:bg-gray-900");
+      });
+    }
+  }
 
-  // hydrate() {
-  //   window.addEventListener("scroll", this.changeColorOnScroll);
-  // }
+  hydrate() {
+    window.addEventListener("scroll", this.changeColorOnScroll);
+  }
 
   render() {
     return (
