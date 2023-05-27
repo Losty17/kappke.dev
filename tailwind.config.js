@@ -13,6 +13,7 @@ module.exports = {
       montserrat: ["Montserrat", "sans-serif"],
       "fira-code": ["Fira Code", "monospace"],
     },
+    color: {},
   },
   plugins: [],
 };
