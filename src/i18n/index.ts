@@ -29,11 +29,8 @@ import English from "./en";
 import Portuguese from "./pt";
 
 export default () => {
-  // const language = navigator?.language.split(/[-_]/)[0] || "en"; // language without region code
-  const language = "pt";
+  const language = navigator?.language.split(/[-_]/)[0] || "en"; // language without region code
   let i18n = {};
-
-  console.log(language);
 
   switch (language) {
     case "pt":

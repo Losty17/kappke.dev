@@ -1,11 +1,13 @@
-import Nullstack, { NullstackClientContext } from 'nullstack'
+import Nullstack from "nullstack";
 
-import Application from './src/Application'
+import Application from "./src/Application";
+import { ClientContext } from "@custom-types";
+import i18n from "@i18n";
 
-const context = Nullstack.start(Application) as NullstackClientContext
+const context = Nullstack.start(Application) as ClientContext;
 
 context.start = async function start() {
-  // https://nullstack.app/pt-br/inicializacao-da-aplicacao
-}
+  context.i18n = i18n();
+};
 
-export default context
+export default context;

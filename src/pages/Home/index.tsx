@@ -7,31 +7,7 @@ import { About, Header, Posts } from "./sections";
 declare function Input(context: { placeholder: string }): NullstackNode;
 
 class Home extends Nullstack {
-  prepare(context: ClientContext) {
-    context.i18n = {
-      greeting: {
-        welcome: "Bem-vindo",
-        to: "a",
-      },
-      seeMore: "Veja mais",
-      whoAmI: {
-        title: "Quem sou eu?",
-        content:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere expedita placeat quis quod odio iusto, quae, asperiores totam harum reiciendis nisi iste voluptatem earum ipsa cum quibusdam, quas mollitia in? Teste Teste Teste",
-      },
-      myProjects: {
-        title: "Meus projetos",
-        content: "",
-      },
-      recentPosts: {
-        title: "Posts recentes",
-        empty: "Nenhum post encontrado",
-      },
-      contactMe: {
-        title: "Contato",
-      },
-    };
-  }
+  prepare(context: ClientContext) {}
 
   renderInput({ placeholder }: { placeholder: string }) {
     return (
