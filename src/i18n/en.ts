@@ -1,6 +1,21 @@
 import { Globalizer } from ".";
 
 export default {
+  nav: {
+    home: "Home",
+    about: "About",
+    projects: "Projects",
+    posts: "Posts",
+    contact: "Contact",
+  },
+  footer: {
+    made: "Made",
+    by: "by",
+    with: "with",
+    using: "using",
+    and: "and",
+    hosted: "hosted",
+  },
   greeting: {
     welcome: "Welcome",
     to: "to",

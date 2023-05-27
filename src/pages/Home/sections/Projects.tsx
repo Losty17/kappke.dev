@@ -5,7 +5,7 @@ import Nullstack from "nullstack";
 export default class Projecs extends Nullstack {
   render({ i18n }: ClientContext) {
     return (
-      <Container>
+      <Container id="projects">
         <Heading type="h2">{i18n.myProjects.title}</Heading>
       </Container>
     );

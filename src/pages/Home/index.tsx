@@ -1,4 +1,4 @@
-import { Container, Navbar } from "@components";
+import { Container, Footer, Navbar } from "@components";
 import Nullstack from "nullstack";
 import { About, Contact, Header, Posts, Projects } from "./sections";
 
@@ -14,6 +14,7 @@ class Home extends Nullstack {
           <Posts />
           <Contact />
         </Container>
+        <Footer />
       </>
     );
   }

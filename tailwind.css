@@ -5,7 +5,3 @@
 * {
     scroll-behavior: smooth;
 }
-
-.post-card-fit-three {
-    width: calc(32%);
-}

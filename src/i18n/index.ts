@@ -1,4 +1,19 @@
 export type Globalizer = {
+  nav: {
+    home: string;
+    about: string;
+    projects: string;
+    posts: string;
+    contact: string;
+  };
+  footer: {
+    made: string;
+    by: string;
+    with: string;
+    using: string;
+    and: string;
+    hosted: string;
+  };
   greeting: {
     welcome: string;
     to: string;

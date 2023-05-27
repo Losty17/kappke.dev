@@ -6,6 +6,7 @@ type ContainerProps = {
   gap?: "sm" | "md" | "lg";
   type?: "outer" | "inner" | "full";
   class?: string;
+  id?: string;
 };
 
 export default class Container extends Nullstack {
@@ -14,6 +15,7 @@ export default class Container extends Nullstack {
     gap = "md",
     type = "outer",
     class: className,
+    id,
   }: ClientContext<ContainerProps>) {
     const gapSize = gap === "sm" ? 4 : gap === "md" ? 8 : 12;
 
@@ -25,7 +27,10 @@ export default class Container extends Nullstack {
         : "w-full";
 
     return (
-      <Box class={`gap-${gapSize} w-full ${conditionalStyle} ${className}`}>
+      <Box
+        id={id}
+        class={`gap-${gapSize} w-full ${conditionalStyle} ${className}`}
+      >
         {children}
       </Box>
     );

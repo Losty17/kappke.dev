@@ -1,3 +1,4 @@
+import { ClientContext } from "@custom-types";
 import NavItem from "./NavItem";
 import Nullstack from "nullstack";
 
@@ -30,14 +31,14 @@ export default class Navbar extends Nullstack {
     window.addEventListener("scroll", this.changeColorOnScroll);
   }
 
-  render() {
+  render({ i18n }: ClientContext) {
     return (
       <nav class="fixed w-full transition-all duration-200 flex justify-center uppercase font-medium">
-        <NavItem title="Home" link="#" />
-        <NavItem title="About" link="#who-am-i" />
-        <NavItem title="Projects" link="#projects" />
-        <NavItem title="Posts" link="#posts" />
-        <NavItem title="Contact" link="#contact" />
+        <NavItem title={i18n.nav.home} link="#" />
+        <NavItem title={i18n.nav.about} link="#who-am-i" />
+        <NavItem title={i18n.nav.projects} link="#projects" />
+        <NavItem title={i18n.nav.posts} link="#posts" />
+        <NavItem title={i18n.nav.contact} link="#contact" />
       </nav>
     );
   }
