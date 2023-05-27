@@ -2,24 +2,33 @@ import { Globalizer } from ".";
 
 export default {
   greeting: {
-    welcome: "Bem-vindo",
-    to: "a",
+    welcome: "Welcome",
+    to: "to",
   },
-  seeMore: "Veja mais",
+  seeMore: "See more",
   whoAmI: {
-    title: "Quem sou eu?",
+    title: "Who am I?",
     content:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere expedita placeat quis quod odio iusto, quae, asperiores totam harum reiciendis nisi iste voluptatem earum ipsa cum quibusdam, quas mollitia in?",
   },
   myProjects: {
-    title: "Meus projetos",
+    title: "My Projects",
     content: "",
   },
   recentPosts: {
-    title: "Posts recentes",
-    empty: "Nenhum post encontrado",
+    title: "Recent posts",
+    empty: "No posts found",
   },
   contactMe: {
-    title: "Contato",
+    title: "Contact",
+    name: "Name",
+    email: "Email",
+    message: "Type your message",
+    send: "Send",
+    country: "Country",
+    phone: "Phone",
+    subject: "Subject",
+    refer: "How did you find me?",
+    success: "Message sent successfully!",
   },
 } as Globalizer;

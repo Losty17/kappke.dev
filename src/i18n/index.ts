@@ -18,6 +18,15 @@ export type Globalizer = {
   };
   contactMe: {
     title: string;
+    name: string;
+    email: string;
+    message: string;
+    send: string;
+    country: string;
+    phone: string;
+    subject: string;
+    refer: string;
+    success: string;
   };
 };
 
