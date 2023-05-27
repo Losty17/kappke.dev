@@ -14,7 +14,7 @@ class Home extends Nullstack {
       <input
         type="text"
         placeholder={placeholder}
-        class="w-full bg-transparent border-b-2 border-gray-900 focus:outline-none pb-2"
+        class="w-full bg-transparent border-b-2 border-neutral-900 focus:outline-none pb-2"
       />
     );
   }
@@ -46,13 +46,13 @@ class Home extends Nullstack {
                   <textarea
                     placeholder="Digite sua mensagem"
                     type="text"
-                    class="w-full h-full bg-transparent border-b-2 border-gray-900 focus:outline-none resize-none"
+                    class="w-full h-full bg-transparent border-b-2 border-neutral-900 focus:outline-none resize-none"
                   />
                 </div>
               </div>
               <button
                 type="submit"
-                class="place-self-end bg-gray-900 text-gray-100 py-3 px-5 rounded"
+                class="place-self-end bg-neutral-900 text-neutral-100 py-3 px-5 rounded"
               >
                 Enviar <span class="font-fira-code">{"->"}</span>
               </button>

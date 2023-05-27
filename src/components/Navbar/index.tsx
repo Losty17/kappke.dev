@@ -8,20 +8,20 @@ export default class Navbar extends Nullstack {
     if (window.scrollY <= 150) {
       document
         .querySelector("nav")
-        .classList.remove("bg-gray-900", "text-gray-100", "shadow");
+        .classList.remove("bg-neutral-900", "text-neutral-100", "shadow");
 
       navItems.forEach((item) => {
-        item.classList.remove("hover:after:bg-gray-100");
-        item.classList.add("hover:after:bg-gray-900");
+        item.classList.remove("hover:after:bg-neutral-100");
+        item.classList.add("hover:after:bg-neutral-900");
       });
     } else {
       document
         .querySelector("nav")
-        .classList.add("bg-gray-900", "text-gray-100", "shadow");
+        .classList.add("bg-neutral-900", "text-neutral-100", "shadow");
 
       navItems.forEach((item) => {
-        item.classList.add("hover:after:bg-gray-100");
-        item.classList.remove("hover:after:bg-gray-900");
+        item.classList.add("hover:after:bg-neutral-100");
+        item.classList.remove("hover:after:bg-neutral-900");
       });
     }
   }

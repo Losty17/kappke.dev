@@ -48,7 +48,7 @@ export default class Posts extends Nullstack {
 
     return (
       <a class="flex flex-col gap-4 w-full sm:w-1/3" href={url}>
-        <div class="w-full h-fit aspect-square bg-gray-100 rounded-lg"></div>
+        <div class="w-full h-fit aspect-square bg-neutral-100 rounded-lg"></div>
         <span class="flex flex-col gap-1">
           <Heading type="h3">{title}</Heading>
           <span class="text-sm text-justify font-regular">{summary}</span>
@@ -79,7 +79,9 @@ export default class Posts extends Nullstack {
     return (
       <Section id="posts">
         <Container type="inner">
-          <Heading size="h2" side="right">{i18n.recentPosts.title}</Heading>
+          <Heading size="h2" side="right">
+            {i18n.recentPosts.title}
+          </Heading>
 
           {posts.length ? (
             <PostList />
