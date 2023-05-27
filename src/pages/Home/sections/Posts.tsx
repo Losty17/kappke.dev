@@ -47,7 +47,7 @@ export default class Posts extends Nullstack {
     if (summary.length > 210) summary = summary.slice(0, 210) + "...";
 
     return (
-      <a class="flex flex-col gap-4 w-full sm:w-1/3" href={url}>
+      <a class="flex flex-col gap-4 w-full tablet:w-1/3" href={url}>
         <div class="w-full h-fit aspect-square bg-neutral-100 rounded-lg"></div>
         <span class="flex flex-col gap-1">
           <Heading type="h3">{title}</Heading>
@@ -60,7 +60,7 @@ export default class Posts extends Nullstack {
   renderPostList({ posts, i18n }: ClientContext<PostsContext>) {
     return (
       <>
-        <div class="flex flex-col sm:flex-row justify-between gap-12">
+        <div class="flex flex-col tablet:flex-row justify-between gap-12">
           {posts.map((post) => (
             <Post post={post} />
           ))}

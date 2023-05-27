@@ -19,9 +19,9 @@ export default class Container extends Nullstack {
 
     const conditionalStyle =
       type === "inner"
-        ? "px-12 py-12 sm:w-1/2 sm:px-0"
+        ? "px-12 py-12 tablet:w-1/2 tablet:px-0"
         : type === "outer"
-        ? "sm:w-1/2"
+        ? "tablet:w-1/2"
         : "w-full";
 
     return (

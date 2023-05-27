@@ -7,7 +7,11 @@ type HeadingProps = {
 };
 
 export default class Heading extends Nullstack {
-  render({ children, type = "h2", side = "left" }: ClientContext<HeadingProps>) {
+  render({
+    children,
+    type = "h2",
+    side = "left",
+  }: ClientContext<HeadingProps>) {
     let size: string;
     switch (type) {
       case "h1":
@@ -22,7 +26,9 @@ export default class Heading extends Nullstack {
     }
 
     return (
-      <span class={`${size} font-semibold uppercase w-full text-center sm:text-${side}`}>
+      <span
+        class={`${size} font-semibold uppercase w-full text-center tablet:text-${side}`}
+      >
         {children}
       </span>
     );
