@@ -1,13 +1,16 @@
-import Nullstack, { NullstackClientContext, NullstackNode } from "nullstack";
+import Nullstack, { NullstackNode } from "nullstack";
 
+import { ClientContext } from "@custom-types";
+import i18n from "@i18n";
 import { Home } from "@pages";
 import "../tailwind.css";
 
 declare function Head(): NullstackNode;
 
 class Application extends Nullstack {
-  prepare({ page }: NullstackClientContext) {
-    page.locale = "pt-BR";
+  prepare(context: ClientContext) {
+    context.page.locale = "pt-BR";
+    context.i18n = i18n();
   }
 
   renderHead() {
