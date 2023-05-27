@@ -25,9 +25,10 @@ export default class Heading extends Nullstack {
         break;
     }
 
+    let textPosition = window.innerWidth < 768 ? "center" : side;
     return (
       <span
-        class={`${size} font-semibold uppercase w-full text-center tablet:text-${side}`}
+        class={`${size} font-semibold uppercase w-full text-${textPosition}`}
       >
         {children}
       </span>
