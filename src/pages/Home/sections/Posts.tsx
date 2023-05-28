@@ -15,26 +15,7 @@ interface PostsContext {
 }
 export default class Posts extends Nullstack {
   prepare(context: ClientContext<PostsContext>) {
-    context.posts = [
-      {
-        title: "Post 1",
-        summary: context.i18n.whoAmI.content,
-        cover: "",
-        url: "/posts/1",
-      },
-      {
-        title: "Post 2",
-        summary: context.i18n.whoAmI.content,
-        cover: "",
-        url: "/posts/1",
-      },
-      {
-        title: "Post 3",
-        summary: context.i18n.whoAmI.content,
-        cover: "",
-        url: "/posts/1",
-      },
-    ];
+    context.posts = [];
   }
 
   renderPost({
@@ -87,7 +68,7 @@ export default class Posts extends Nullstack {
             <PostList />
           ) : (
             <span class="text-lg font-regular w-full text-center">
-              {i18n.recentPosts.empty} :(
+              {i18n.recentPosts.empty}
             </span>
           )}
         </Container>

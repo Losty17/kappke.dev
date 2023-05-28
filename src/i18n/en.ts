@@ -24,7 +24,7 @@ export default {
   whoAmI: {
     title: "Who am I?",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere expedita placeat quis quod odio iusto, quae, asperiores totam harum reiciendis nisi iste voluptatem earum ipsa cum quibusdam, quas mollitia in?",
+      "Driven by the pursuit of knowledge, I, Vinícius Kappke, am a passionate Fullstack Developer. Certified by LEAD Dell, I have experience in web application development, automation, and chatbots. As a student of Systems Analysis and Development, I am capable of gathering requirements and estimating costs and deadlines, as well as developing and testing applications. Currently, I work full-time as a developer for enterprise solutions, focusing on the Business Process Management (BPM) methodology.",
   },
   myProjects: {
     title: "My Projects",
@@ -32,7 +32,7 @@ export default {
   },
   recentPosts: {
     title: "Recent posts",
-    empty: "No posts found",
+    empty: "No posts yet",
   },
   contactMe: {
     title: "Contact",

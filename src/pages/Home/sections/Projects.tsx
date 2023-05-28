@@ -7,6 +7,7 @@ export default class Projecs extends Nullstack {
     return (
       <Container id="projects">
         <Heading type="h2">{i18n.myProjects.title}</Heading>
+        <div class="text-center">Coming Soon</div>
       </Container>
     );
   }
