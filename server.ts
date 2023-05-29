@@ -1,11 +1,18 @@
-import Nullstack, { NullstackServerContext } from 'nullstack'
+import Nullstack from "nullstack";
+import { ServerContext } from "@custom-types";
 
-import Application from './src/Application'
+import Application from "./src/Application";
+import { PrismaClient } from "@prisma/client";
 
-const context = Nullstack.start(Application) as NullstackServerContext
+// @ts-ignore
+const context = Nullstack.start(Application) as ServerContext;
 
 context.start = async function start() {
-  // https://nullstack.app/pt-br/inicializacao-da-aplicacao
-}
+  context.db = new PrismaClient();
 
-export default context
+  context.db.user.findMany().then((users) => {
+    console.log(users);
+  });
+};
+
+export default context;
