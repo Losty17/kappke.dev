@@ -27,32 +27,14 @@ const Topic = ({ number, title, content, active, onClick }: Topic) => {
 
       <div className="flex flex-col text-xl font-semibold gap-4">
         {title}
-        {active && <p className="text-sm font-normal">{content}</p>}
+        {active && <p className="text-sm font-normal text-left">{content}</p>}
       </div>
     </div>
   );
 };
 
-const projects = [
-  {
-    title: "Project 1",
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  },
-  {
-    title: "Project 2",
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  },
-  {
-    title: "Project 3",
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  },
-  {
-    title: "Project 4",
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  },
-];
-
 const ProjectList = () => {
+  const i18n = useI18n();
   const [active, setActive] = useState(0);
 
   return (
@@ -62,7 +44,7 @@ const ProjectList = () => {
       </div>
       <div className="flex-1">
         <div className="flex flex-col justify-between h-full py-16">
-          {projects.map((project, index) => (
+          {i18n.myProjects.projects.map((project, index) => (
             <Topic
               key={index}
               number={index + 1}
