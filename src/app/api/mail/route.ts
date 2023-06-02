@@ -16,7 +16,7 @@ export async function POST(request: Request) {
   const { name, email, country, phone, refer, subject, message } = data;
 
   await transporter.sendMail({
-    to: "vinikappke@gmail.com ",
+    to: "vinikappke@gmail.com",
     subject: `[CONTATO kappke.dev] <${name} (${email})> ${subject}`,
     text: `Nome: ${name}\nEmail: ${email}\nPaís: ${country}\nTelefone: ${phone}\nReferência: ${refer}\nMensagem: ${message}`,
   });

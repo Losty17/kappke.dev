@@ -37,6 +37,8 @@ export default () => {
     return () => window.removeEventListener("scroll", changeColorOnScroll);
   }, []);
 
+  typeof window === "object" && changeColorOnScroll();
+
   return (
     <nav className="fixed w-full transition-all duration-200 flex justify-center uppercase font-medium">
       <NavItem title={i18n.nav.home} link="#" />

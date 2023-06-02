@@ -2,7 +2,7 @@
 
 type HeadingProps = {
   type?: "h1" | "h2" | "h3";
-  side?: "left" | "right";
+  side?: "left" | "right" | "center";
   children: React.ReactNode;
 };
 
@@ -20,11 +20,8 @@ export default ({ children, type = "h2", side = "left" }: HeadingProps) => {
       break;
   }
 
-  const textPosition = window.innerWidth < 768 ? "center" : side;
   return (
-    <span
-      className={`${size} font-semibold uppercase w-full text-${textPosition}`}
-    >
+    <span className={`${size} font-semibold uppercase w-full text-${side}`}>
       {children}
     </span>
   );

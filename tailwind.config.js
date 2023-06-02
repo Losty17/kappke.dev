@@ -18,6 +18,8 @@ module.exports = {
       "crete-round": ["Crete Round", "sans-serif"],
       montserrat: ["Montserrat", "sans-serif"],
       "fira-code": ["Fira Code", "monospace"],
+      tech: ["Share Tech", "sans-serif"],
+      "tech-mono": ["Share Tech Mono", "monospace"],
     },
     screens: {
       phone: "840px",

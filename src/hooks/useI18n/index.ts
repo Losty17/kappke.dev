@@ -1,75 +1,59 @@
-export type Globalizer = {
+const i18n = {
   nav: {
-    home: string;
-    about: string;
-    projects: string;
-    posts: string;
-    contact: string;
-  };
+    home: "Home",
+    about: "About",
+    projects: "Projects",
+    posts: "Posts",
+    contact: "Contact",
+  },
   footer: {
-    made: string;
-    by: string;
-    with: string;
-    using: string;
-    and: string;
-    hosted: string;
-  };
+    made: "Made",
+    by: "by",
+    with: "with",
+    using: "using",
+    and: "and",
+    hosted: "hosted",
+  },
   greeting: {
-    welcome: string;
-    to: string;
-  };
-  seeMore: string;
+    welcome: "Welcome",
+    to: "to",
+  },
+  seeMore: "See more",
   whoAmI: {
-    title: string;
-    content: string;
-  };
+    title: "Who am I?",
+    content:
+      "Driven by the pursuit of knowledge, I, Vinícius Kappke, am a passionate Fullstack Developer. Certified by LEAD Dell, I have experience in web application development, automation, and chatbots. As a student of Systems Analysis and Development, I am capable of gathering requirements and estimating costs and deadlines, as well as developing and testing applications. Currently, I work full-time as a developer for enterprise solutions, focusing on the Business Process Management (BPM) methodology.",
+  },
   myProjects: {
-    title: string;
-    content: string;
-  };
+    title: "What do we do?",
+    content:
+      "We are software craftsmen. We construct solutions for your ideas.",
+    callToAction: "Follow the path to see our craftsmanship",
+  },
   recentPosts: {
-    title: string;
-    empty: string;
-  };
+    title: "Recent posts",
+    empty: "No posts yet",
+  },
   contactMe: {
-    title: string;
-    name: string;
-    email: string;
-    message: string;
-    send: string;
-    country: string;
-    phone: string;
-    subject: string;
-    refer: string;
-    success: string;
-  };
+    title: "Contact",
+    name: "Name",
+    email: "Email",
+    message: "Type your message",
+    send: "Send",
+    country: "Country",
+    phone: "Phone",
+    subject: "Subject",
+    refer: "How did you find me?",
+    success: "Message sent successfully!",
+  },
 };
+
+export type Globalizer = typeof i18n;
 
 type ReadonlyGlobalizer = {
   readonly [K in keyof Globalizer]: Globalizer[K];
 };
 
-import English from "./en";
-import Portuguese from "./pt";
-
 export default () => {
-  let language: string;
-  let i18n = {};
-
-  try {
-    language = navigator?.language.split(/[-_]/)[0] || "en"; // language without region code
-  } catch (error) {
-    language = "en";
-  }
-
-  switch (language) {
-    case "pt":
-      i18n = Portuguese;
-      break;
-    default:
-      i18n = English;
-      break;
-  }
-
   return i18n as ReadonlyGlobalizer;
 };
