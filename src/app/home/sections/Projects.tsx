@@ -18,7 +18,7 @@ const Topic = ({ number, title, content, active, onClick }: Topic) => {
     : "bg-neutral-200 text-neutral-900";
 
   return (
-    <div onClick={onClick} className="flex gap-4">
+    <div tabIndex={0} onClick={onClick} className="flex gap-4">
       <div
         className={`leading-loose font-semibold aspect-square w-8 h-8 rounded-full text-center ${bg}`}
       >
@@ -34,27 +34,23 @@ const Topic = ({ number, title, content, active, onClick }: Topic) => {
 };
 
 const ProjectList = () => {
-  const i18n = useI18n();
+  const projects = useI18n().myProjects.projects;
   const [active, setActive] = useState(0);
 
   return (
-    <div className="flex gap-12 h-[512px]">
-      <div className="h-full w-2/5 bg-neutral-900 rounded-full text-neutral-100 text-center">
-        {active + 1}
-      </div>
-      <div className="flex-1">
-        <div className="flex flex-col justify-between h-full py-16">
-          {i18n.myProjects.projects.map((project, index) => (
-            <Topic
-              key={index}
-              number={index + 1}
-              title={project.title}
-              content={project.content}
-              active={index === active}
-              onClick={() => setActive(index)}
-            />
-          ))}
-        </div>
+    <div className="flex gap-32 h-[600px]">
+      <img src="/preceptor.svg" className="h-full rounded-full" />
+      <div className="flex flex-col justify-between self-center h-3/5">
+        {projects.map(({ title, content }, index) => (
+          <Topic
+            key={index}
+            number={index + 1}
+            title={title}
+            content={content}
+            active={index === active}
+            onClick={() => setActive(index)}
+          />
+        ))}
       </div>
     </div>
   );
@@ -68,7 +64,7 @@ export default () => {
       <Heading type="h2" side="center">
         {i18n.myProjects.title}
       </Heading>
-      <div className="text-center mb-8">
+      <div className="text-center">
         {i18n.myProjects.content}
         <br />
         {i18n.myProjects.callToAction}
