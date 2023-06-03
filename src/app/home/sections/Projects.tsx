@@ -40,7 +40,7 @@ const ProjectList = () => {
   return (
     <div className="flex gap-32 h-[600px]">
       <img src="/preceptor.svg" className="h-full rounded-full" />
-      <div className="flex flex-col justify-between self-center h-3/5">
+      <div className="flex flex-col justify-between self-center h-4/5 desktop:h-3/5">
         {projects.map(({ title, content }, index) => (
           <Topic
             key={index}
