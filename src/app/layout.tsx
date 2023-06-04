@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Montserrat } from "next/font/google";
+import { NextAuthProvider } from "./providers";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -36,7 +37,8 @@ export default ({ children }: { children: React.ReactNode }) => {
         />
       </head>
       <body className={`${montserrat.className} font-montserrat scroll-smooth`}>
-        {children}
+        <NextAuthProvider>{children}</NextAuthProvider>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
       </body>
     </html>
   );

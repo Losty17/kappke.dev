@@ -1,5 +1,5 @@
 import { Container, Footer, Navbar } from "@/components";
-import { About, Contact, Hero, Posts, Projects } from "./sections";
+import { About, Contact, Hero, Projects } from "./sections";
 
 export default () => {
   return (
@@ -9,8 +9,7 @@ export default () => {
         <Hero />
         <About />
         <Projects />
-        {/* @ts-expect-error */}
-        <Posts />
+        {/* <Posts /> */}
         <Contact />
       </Container>
       <Footer />

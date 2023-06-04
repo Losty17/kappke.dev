@@ -6,3 +6,7 @@ export { default as Section } from "./Section";
 export { default as Form } from "./Form";
 export { default as Footer } from "./Footer";
 export { TextInput } from "./Form/fields";
+export { default as Dropdown } from "./Dropdown";
+export { default as DropdownItems } from "./Dropdown/DropdownItems";
+export { default as DropdownItem } from "./Dropdown/DropdownItem";
+export { default as DropdownTrigger } from "./Dropdown/DropdownTrigger";
