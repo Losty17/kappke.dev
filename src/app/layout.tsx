@@ -35,6 +35,24 @@ export default ({ children }: { children: React.ReactNode }) => {
           href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
           rel="stylesheet"
         />
+        <style>
+          {/* create a custom scrollbar */}
+          {`
+            ::-webkit-scrollbar {
+              width: 0px;
+              height: 0px;
+            }
+            ::-webkit-scrollbar-track {
+              background: #f1f1f1;
+            }
+            ::-webkit-scrollbar-thumb {
+              background: #888;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+              background: #555;
+            }
+          `}
+        </style>
       </head>
       <body className={`${montserrat.className} font-montserrat scroll-smooth`}>
         <NextAuthProvider>{children}</NextAuthProvider>

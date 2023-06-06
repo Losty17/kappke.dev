@@ -5,6 +5,14 @@ import Link from "next/link";
 import { redirect, usePathname } from "next/navigation";
 import { useState } from "react";
 
+type Tab = {
+  name: string;
+  href: string;
+  id: string;
+  subtabs?: Tab[];
+  activateId?: string;
+};
+
 const tabs = [
   {
     name: "Dashboard",
@@ -15,6 +23,19 @@ const tabs = [
     name: "Content",
     href: "/dashboard/content/posts",
     id: "content",
+    activateId: "posts",
+    subtabs: [
+      {
+        name: "Posts",
+        href: "/dashboard/content/posts",
+        id: "posts",
+      },
+      {
+        name: "Products",
+        href: "/dashboard/content/products",
+        id: "products",
+      },
+    ],
   },
   {
     name: "Users",
@@ -28,33 +49,64 @@ const tabs = [
   },
 ];
 
+const Tablist = ({
+  tabs,
+  activeTab,
+  setActiveTab,
+}: {
+  tabs: Tab[];
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+}) => {
+  return (
+    <ul className="flex flex-col gap-3 text-sm font-semibold">
+      {tabs.map((tab) => (
+        <li
+          key={tab.id}
+          className="flex flex-col gap-3 items-center w-full px-6"
+        >
+          <Link
+            href={tab.href}
+            className={`w-full hover:text-neutral-900 ${
+              activeTab === tab.id ? "text-neutral-900" : ""
+            }`}
+            onClick={() => setActiveTab(tab.activateId || tab.id)}
+          >
+            {tab.name}
+          </Link>
+          {tab.subtabs &&
+            (activeTab === tab.id ||
+              tab.subtabs?.some((st) => activeTab === st.id)) && (
+              <Tablist
+                tabs={tab.subtabs}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+              />
+            )}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 const Sidebar = () => {
   const activeTabRoute = usePathname().split("/")[2] || "";
-  const [activeTab, setActiveTab] = useState(activeTabRoute);
+  const [activeTab, setActiveTab] = useState(
+    tabs.find((t) => t.id === activeTabRoute)?.activateId || activeTabRoute
+  );
 
   return (
     <aside className="flex flex-col justify-between w-1/6 p-4 shadow-lg bg-neutral-100 text-neutral-500 rounded-2xl">
-      <div className="flex flex-col h-1/3 justify-between">
+      <div className="flex flex-col gap-12">
         <span className="font-tech font-semibold text-center text-neutral-900 text-lg">
           kappke.dev
         </span>
         <ul className="flex flex-col gap-3 text-sm font-semibold">
-          {tabs.map((tab) => (
-            <li
-              key={tab.id}
-              className={`flex items-center w-full px-6 hover:text-neutral-900 ${
-                activeTab === tab.id ? "text-neutral-900" : ""
-              }`}
-            >
-              <Link
-                href={tab.href}
-                className="w-full"
-                onClick={() => setActiveTab(tab.id)}
-              >
-                {tab.name}
-              </Link>
-            </li>
-          ))}
+          <Tablist
+            tabs={tabs}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
         </ul>
       </div>
       <div className="flex flex-col text-xs">
@@ -74,7 +126,7 @@ const Topbar = () => {
   });
 
   return (
-    <nav className="flex items-center justify-between w-full h-16 px-4 bg-neutral-100 text-neutral-900 shadow-lg rounded-xl">
+    <nav className="flex items-center justify-between w-full h-16 min-h-[4rem] px-4 bg-neutral-100 text-neutral-900 shadow-lg rounded-xl">
       <div className="flex items-center">
         {session?.user?.image ? (
           <img
@@ -113,13 +165,13 @@ const Topbar = () => {
 
 export default ({ children }: { children: React.ReactNode }) => {
   return (
-    <section className="flex flex-row gap-4 h-screen bg-neutral-300 text-neutral-100 p-4">
-      <Sidebar />
-      <div className="flex flex-col gap-4 w-full">
-        <Topbar />
-        <main className="flex flex-col w-full px-4 overflow-y-auto">
+    <section className="bg-neutral-300 text-neutral-100 h-screen p-4">
+      <div className="desktop:w-4/5 m-auto flex flex-row gap-4 h-full">
+        <Sidebar />
+        <div className="flex flex-col gap-4 w-full">
+          <Topbar />
           {children}
-        </main>
+        </div>
       </div>
     </section>
   );
