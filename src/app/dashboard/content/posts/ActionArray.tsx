@@ -41,6 +41,7 @@ export default () => (
     <div className="flex items-center gap-4">
       {postActions.map(({ icon: Icon, label, action }) => (
         <button
+          key={label}
           onClick={action}
           className="bg-almost-white text-magenta rounded-full p-2"
         >

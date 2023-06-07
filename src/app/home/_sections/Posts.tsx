@@ -53,7 +53,7 @@ export default async () => {
           <>
             <div className="flex flex-col tablet:flex-row justify-between gap-12">
               {posts.map((post) => (
-                <PostElement post={post} />
+                <PostElement key={post.id} post={post} />
               ))}
             </div>
             <a

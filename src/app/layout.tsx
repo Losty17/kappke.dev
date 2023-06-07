@@ -38,7 +38,6 @@ export default ({ children }: { children: React.ReactNode }) => {
       </head>
       <body className={`${montserrat.className} font-montserrat scroll-smooth`}>
         <NextAuthProvider>{children}</NextAuthProvider>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
       </body>
     </html>
   );
