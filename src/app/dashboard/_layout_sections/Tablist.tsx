@@ -3,7 +3,6 @@
 import { Sidebar } from "flowbite-react";
 import Link from "next/link";
 import type { Tab } from "../_tabs";
-import { HomeIcon } from "@heroicons/react/24/outline";
 
 const Tablist = ({
   tabs,
@@ -14,15 +13,16 @@ const Tablist = ({
   activeTab: string;
   setActiveTab: (tab: string) => void;
 }) => {
+ 
   return (
     <>
       {tabs.map((tab) =>
         tab.subtabs ? (
           <Sidebar.Collapse
             key={tab.id}
-            className="!font-semibold"
+            className="sidebar-collapse !font-semibold !text-graphite [&>svg]:!text-graphite [&+ul]:py-0 [&+ul]:space-y-0"
             label={tab.name}
-            icon={HomeIcon}
+            icon={tab.icon}
             open
           >
             <Tablist
@@ -36,8 +36,9 @@ const Tablist = ({
             as={Link}
             href={tab.href}
             key={tab.id}
-            icon={HomeIcon}
-            className="font-semibold"
+            icon={tab.icon}
+            onClick={() => setActiveTab(tab.id)}
+            className={`font-semibold ${activeTab === tab.id ? "!text-magenta [&>svg]:!text-magenta [&>svg]:hover:!text-magenta" : "!text-graphite [&>svg]:hover:!text-graphite"}`}
           >
             {tab.name}
           </Sidebar.Item>
