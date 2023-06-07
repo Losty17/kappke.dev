@@ -19,8 +19,11 @@
     "typescript": "5.0.4"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "@prisma/client": "^4.15.0",
     "autoprefixer": "^10.4.14",
+    "flowbite": "^1.6.5",
+    "flowbite-react": "^0.4.7",
     "next": "^13.4.4",
     "next-auth": "^4.22.1",
     "nodemailer": "^6.9.3",

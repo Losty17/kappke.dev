@@ -1,13 +1,12 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
 
 export default () => {
-  const { data: session } = useSession({
+  useSession({
     required: true,
     onUnauthenticated() {
-      redirect("/");
+      signIn();
     },
   });
 

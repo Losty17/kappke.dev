@@ -1,5 +1,5 @@
-import "./globals.css";
 import { Montserrat } from "next/font/google";
+import "./globals.css";
 import { NextAuthProvider } from "./providers";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
