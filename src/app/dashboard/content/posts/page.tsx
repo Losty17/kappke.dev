@@ -1,25 +1,36 @@
+"use client";
+
 import PostTable from "./PostTable";
 import ActionArray from "./ActionArray";
+import { useEffect, useState } from "react";
+import { Post } from "@prisma/client";
+import useSWR from "swr";
 
-const getData = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/todos");
-  const data = await response.json();
+export default () => {
+  const { data, error, isLoading } = useSWR("/api/posts", (...args) =>
+    fetch(...args).then((res) => res.json())
+  );
+  const [posts, setPosts] = useState<Post[]>([]);
 
-  return data as {
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
-  }[];
-};
+  useEffect(() => {
+    if (data) setPosts(data.data);
+  }, [data]);
 
-export default async () => {
-  const data = await getData();
+  const handleSearchPosts = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+
+    const filteredPosts = data.data.filter((post: Post) =>
+      post.title.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setPosts(filteredPosts);
+  };
 
   return (
     <div className="relative overflow-x-auto rounded-lg scroll">
-      <ActionArray />
-      <PostTable posts={data} />
+      <ActionArray searchPosts={handleSearchPosts} />
+      {error && <div>Error: {error}</div>}
+      <PostTable posts={posts} />
     </div>
   );
 };

@@ -1,22 +1,13 @@
 "use client";
 
+import { Post } from "@prisma/client";
 import { Checkbox, Table } from "flowbite-react";
 
 const CustomCheckbox = () => (
   <Checkbox className="border-magenta/60 bg-transparent focus:ring-transparent checked:bg-magenta" />
 );
 
-const Row = ({
-  userId,
-  id,
-  title,
-  body,
-}: {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}) => (
+const Row = ({ id, title, content }: Post) => (
   <Table.Row className="even:bg-almost-white odd:bg-white">
     <Table.Cell className="!p-3 text-center">
       <CustomCheckbox />
@@ -41,16 +32,30 @@ const Row = ({
   </Table.Row>
 );
 
-export default ({
-  posts,
-}: {
-  posts: {
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
-  }[];
-}) => (
+const SkeletonRow = () => (
+  <Table.Row className="even:bg-almost-white odd:bg-white">
+    <Table.Cell className="!p-3 text-center">
+      <CustomCheckbox />
+    </Table.Cell>
+    <Table.Cell className="break-all">
+      <div className="animate-pulse h-4 bg-classic-gray rounded"></div>
+    </Table.Cell>
+    <Table.Cell>
+      <div className="animate-pulse h-4 bg-classic-gray rounded"></div>
+    </Table.Cell>
+    <Table.Cell>
+      <div className="animate-pulse h-4 bg-classic-gray rounded"></div>
+    </Table.Cell>
+    <Table.Cell>
+      <div className="animate-pulse h-4 bg-classic-gray rounded"></div>
+    </Table.Cell>
+    <Table.Cell>
+      <div className="animate-pulse h-4 bg-classic-gray rounded"></div>
+    </Table.Cell>
+  </Table.Row>
+);
+
+export default ({ posts }: { posts: Post[] }) => (
   <Table className="table-fixed border-classic-gray text-graphite font-medium rounded-t-2xl">
     <colgroup>
       <col span={1} style={{ width: "40px" }} />
@@ -71,9 +76,11 @@ export default ({
       <Table.HeadCell className="rounded-tr-2xl">Status</Table.HeadCell>
     </Table.Head>
     <Table.Body className="divide-y">
-      {posts.map((post) => (
-        <Row {...post} key={post.id} />
-      ))}
+      {posts.length === 0
+        ? Array(8)
+            .fill(0)
+            .map((v, i) => <SkeletonRow key={i} />)
+        : posts.map((post) => <Row {...post} key={post.id} />)}
     </Table.Body>
   </Table>
 );

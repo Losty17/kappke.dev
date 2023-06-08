@@ -11,7 +11,7 @@
     height: calc(100% - 32px) !important;
 
     & > div {
-      @apply bg-white;
+      @apply bg-almost-white;
 
       & > div > ul {
         @apply space-y-4;
@@ -28,7 +28,7 @@
   }
 
   .topbar {
-    @apply bg-white;
+    @apply bg-almost-white;
 
     left: calc(16rem + 32px);
     width: calc(100% - 16rem - 48px) !important;
@@ -47,7 +47,7 @@
     }
 
     &::after {
-      @apply bg-white;
+      @apply bg-almost-white;
 
       content: "";
       position: absolute;

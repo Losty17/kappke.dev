@@ -1,6 +1,6 @@
 import { Montserrat } from "next/font/google";
 import "./globals.scss";
-import { NextAuthProvider } from "./providers";
+import { AdminProvider, NextAuthProvider } from "./providers";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -37,7 +37,9 @@ export default ({ children }: { children: React.ReactNode }) => {
         />
       </head>
       <body className={`${montserrat.className} font-montserrat scroll-smooth`}>
-        <NextAuthProvider>{children}</NextAuthProvider>
+        <NextAuthProvider>
+          <AdminProvider>{children}</AdminProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );

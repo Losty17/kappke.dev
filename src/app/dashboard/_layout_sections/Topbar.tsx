@@ -16,7 +16,7 @@ export default () => {
   });
 
   return (
-    <nav className="fixed topbar flex items-center justify-between h-[4.5rem] min-h-[4.5rem] px-4 bg-neutral-100 text-charcoal rounded-xl select-none">
+    <nav className="fixed topbar flex items-center justify-between h-[4.5rem] min-h-[4.5rem] px-4 bg-neutral-100 text-magenta rounded-xl select-none">
       <button className="flex items-center gap-2">
         <CalendarIcon className="h-6 ml-2 text-magenta" />
         <span className="text-sm font-bold text-graphite">
@@ -39,14 +39,14 @@ export default () => {
           onClick={console.log}
           className="h-6 text-magenta cursor-pointer"
         />
-        {session?.user?.image && (
+        {session?.user?.image ? (
           <>
             <span className="flex flex-col">
               <span className="leading-tight font-semibold">
                 {session?.user?.name}
               </span>
               <span className="text-xs leading-tight italic text-graphite">
-                Product Manager
+                {session?.user?.email}
               </span>
             </span>
             <img
@@ -54,6 +54,14 @@ export default () => {
               alt="logo"
               className="h-10 aspect-square rounded-full"
             />
+          </>
+        ) : (
+          <>
+            <span className="flex flex-col items-end gap-2 animate-pulse">
+              <span className="h-2.5 w-16 rounded-full bg-classic-gray" />
+              <span className="h-2 w-32 rounded-full bg-classic-gray" />
+            </span>
+            <span className="h-10 aspect-square rounded-full bg-classic-gray animate-pulse" />
           </>
         )}
       </div>
