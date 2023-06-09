@@ -67,7 +67,11 @@
   }
 
   .dashboard-content {
-    margin-top: calc(4rem + 16px);
+    margin-top: calc(4rem + 24px);
     margin-left: calc(16rem + 16px);
+
+    & > div > div > div.drop-shadow-md {
+      @apply drop-shadow-none;
+    }
   }
 }
