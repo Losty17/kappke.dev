@@ -143,9 +143,7 @@ export default ({ children }: { children: React.ReactNode }) => {
     required: true,
   });
   const activeTabRoute = usePathname().split("/")[2] || "";
-  const [activeTab, setActiveTab] = useState(
-    tabs.find((t) => t.id === activeTabRoute)?.activateId || activeTabRoute
-  );
+  const [activeTab, setActiveTab] = useState(activeTabRoute);
 
   return (
     <section className="desktop:w-4/5 m-auto h-screen p-4">
@@ -232,7 +230,7 @@ export default ({ children }: { children: React.ReactNode }) => {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center h-full">
-          <Spinner className="w-32 h-32 animate-pulse" />
+          <Spinner className="fill-magenta" size="xl" />
         </div>
       )}
     </section>
