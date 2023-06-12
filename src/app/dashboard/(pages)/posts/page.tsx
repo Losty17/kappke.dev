@@ -7,7 +7,6 @@ import {
   LockClosedIcon,
   MagnifyingGlassIcon,
   PaperAirplaneIcon,
-  PencilIcon,
   PlusCircleIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
@@ -15,6 +14,7 @@ import { Post as PostType, User } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import PostTable from "./PostTable";
+import { useRouter } from "next/navigation";
 
 export type Post = PostType & {
   author: User;
@@ -29,6 +29,7 @@ type Action = {
     selectedPosts: Post[];
     setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
     activeUser: User;
+    router: ReturnType<typeof useRouter>;
   }) => void;
 };
 
@@ -36,7 +37,7 @@ const postActions = [
   {
     icon: PlusCircleIcon,
     label: "Create",
-    action: ({ setPosts, activeUser }) => {
+    action: ({ setPosts, activeUser, router }) => {
       fetch("/api/posts", {
         method: "POST",
         headers: {
@@ -52,9 +53,7 @@ const postActions = [
         .then((data) => {
           setPosts((posts) => [data.data, ...posts]);
 
-          window
-            .open(`/dashboard/posts/edit/${data.data.id}`, "_blank")
-            ?.focus();
+          router.push(`/dashboard/posts/edit/${data.data.id}`);
         });
     },
   },
@@ -92,6 +91,7 @@ export default () => {
   const [selectedPosts, setSelectedPosts] = useState<Post[]>([]);
   const { data, error, isLoading } = useSWR("/api/posts");
   const { data: session } = useSession({ required: true });
+  const router = useRouter();
 
   useEffect(() => data && setPosts(data.data), [data]);
 
@@ -119,6 +119,7 @@ export default () => {
                   setPosts,
                   selectedPosts,
                   activeUser: session?.user as User,
+                  router,
                 })
               }
             >

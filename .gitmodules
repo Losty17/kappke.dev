@@ -1,0 +1,3 @@
+[submodule "wordsmith"]
+	path = wordsmith
+	url = https://github.com/Losty17/wordsmith.git

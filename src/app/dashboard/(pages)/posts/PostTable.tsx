@@ -5,6 +5,7 @@ import { SetStateAction, forwardRef, useRef } from "react";
 import { Post } from "./page";
 import PostTableSkeleton from "./PostTableSkeleton";
 import { formatDate } from "@/utils";
+import { useRouter } from "next/navigation";
 
 type CustomCheckboxProps = {
   checked?: boolean;
@@ -33,6 +34,7 @@ const Row = ({
   handleSelectPost: (post: Post) => void;
 }) => {
   const { title, createdAt, updatedAt, author, published } = post;
+  const router = useRouter();
 
   return (
     <Table.Row className="even:bg-almost-white odd:bg-white">
@@ -45,9 +47,7 @@ const Row = ({
       <Table.Cell className="break-all">
         <span
           className="cursor-pointer hover:text-magenta hover:underline"
-          onClick={() =>
-            window.open(`/dashboard/posts/edit/${post.id}`, "_blank")?.focus()
-          }
+          onClick={() => router.push(`/dashboard/posts/edit/${post.id}`)}
         >
           {title}
         </span>
