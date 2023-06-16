@@ -5,6 +5,10 @@
 @layer components {
   body:has(.dashboard-content) {
     @apply bg-classic-gray;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .sidebar {
@@ -69,6 +73,7 @@
   .dashboard-content {
     margin-top: calc(4rem + 24px);
     margin-left: calc(16rem + 16px);
+    min-height: calc(100% - 4rem - 24px - 56px) !important;
 
     & > div > div > div.drop-shadow-md {
       @apply drop-shadow-none;

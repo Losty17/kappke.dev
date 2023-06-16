@@ -45,7 +45,7 @@ const postActions = [
         },
         body: JSON.stringify({
           title: "New post",
-          content: "New post content",
+          content: '[{"type":"h1","content":"New Post"},{"type":"default","content":""}]',
           author: activeUser,
         }),
       })
